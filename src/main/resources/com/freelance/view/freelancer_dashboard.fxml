@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.freelance.controller.FreelancerDashboardController" stylesheets="@../styles/styles.css">
+    <!-- Top section with logout button -->
+    <HBox alignment="CENTER_RIGHT" styleClass="header">
+        <padding>
+            <Insets top="10" right="20" bottom="10" left="20"/>
+        </padding>
+        <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout" styleClass="logout-button"/>
+    </HBox>
+
+    <!-- Main content -->
+    <TabPane VBox.vgrow="ALWAYS" styleClass="tab-pane">
+        <Tab text="Available Projects" closable="false">
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-pane">
+                <VBox fx:id="availableProjectsContainer" spacing="15" styleClass="dashboard-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <Label text="Available Projects" styleClass="title-label"/>
+                    <Label text="Browse and apply for projects that match your skills" styleClass="subtitle-label"/>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="Client Profiles" closable="false">
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-pane">
+                <VBox fx:id="clientProfilesContainer" spacing="15" styleClass="dashboard-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <Label text="Client Profiles" styleClass="title-label"/>
+                    <Label text="View and connect with potential clients" styleClass="subtitle-label"/>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="My Bids" closable="false">
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-pane">
+                <VBox fx:id="myBidsContainer" spacing="15" styleClass="dashboard-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <Label text="My Bids" styleClass="title-label"/>
+                    <Label text="Track your project proposals and their status" styleClass="subtitle-label"/>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="Active Projects" closable="false">
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-pane">
+                <VBox spacing="15" styleClass="dashboard-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <Label text="My Projects" styleClass="title-label"/>
+                    <Label text="Manage your ongoing and completed projects" styleClass="subtitle-label"/>
+                    
+                    <TitledPane text="In Progress" expanded="true" styleClass="titled-pane">
+                        <VBox fx:id="activeProjectsContainer" spacing="15"/>
+                    </TitledPane>
+                    <TitledPane text="Completed" expanded="true" styleClass="titled-pane">
+                        <VBox fx:id="completedProjectsContainer" spacing="15"/>
+                    </TitledPane>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="Invoices" closable="false">
+            <VBox spacing="15" styleClass="dashboard-container">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                <Label text="Invoices" styleClass="title-label"/>
+                <Label text="Manage your project invoices and payments" styleClass="subtitle-label"/>
+                
+                <Button text="Generate Invoice" onAction="#showInvoiceDialog" styleClass="primary-button" maxWidth="Infinity"/>
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-pane">
+                    <VBox fx:id="invoicesContainer" spacing="15"/>
+                </ScrollPane>
+            </VBox>
+        </Tab>
+
+        <Tab text="My Profile" closable="false">
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-pane">
+                <VBox spacing="15" styleClass="dashboard-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <Label text="My Profile" styleClass="title-label"/>
+                    <Label text="Manage your skills and view your ratings" styleClass="subtitle-label"/>
+                    
+                    <TitledPane text="Skills" expanded="true" styleClass="titled-pane">
+                        <VBox spacing="15">
+                            <HBox spacing="15" alignment="CENTER_LEFT">
+                                <ComboBox fx:id="skillComboBox" promptText="Select Skill" styleClass="input-field" HBox.hgrow="ALWAYS"/>
+                                <ComboBox fx:id="proficiencyComboBox" promptText="Select Proficiency" styleClass="input-field" HBox.hgrow="ALWAYS"/>
+                                <Button text="Add Skill" onAction="#addSkill" styleClass="primary-button"/>
+                            </HBox>
+                            <ListView fx:id="skillsList" styleClass="list-view" VBox.vgrow="ALWAYS"/>
+                        </VBox>
+                    </TitledPane>
+                    <TitledPane text="Ratings &amp; Reviews" expanded="true" styleClass="titled-pane">
+                        <VBox fx:id="ratingsContainer" spacing="15"/>
+                    </TitledPane>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+    </TabPane>
+</VBox> 

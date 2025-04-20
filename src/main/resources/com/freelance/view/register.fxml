@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.freelance.controller.RegisterController" stylesheets="@../styles/styles.css">
+    
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+
+    <VBox alignment="CENTER" spacing="25" maxWidth="400" styleClass="register-container">
+        <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
+            <Image url="@../images/logo.png"/>
+        </ImageView>
+        
+        <Label text="Create Account" styleClass="title-label"/>
+        <Label text="Join our freelance platform today" styleClass="subtitle-label"/>
+        
+        <VBox spacing="15" maxWidth="400" styleClass="form-container">
+            <TextField fx:id="username" promptText="Username" styleClass="input-field"/>
+            <TextField fx:id="email" promptText="Email" styleClass="input-field"/>
+            <PasswordField fx:id="password" promptText="Password" styleClass="input-field"/>
+            <PasswordField fx:id="confirmPassword" promptText="Confirm Password" styleClass="input-field"/>
+            
+            <ComboBox fx:id="roleComboBox" promptText="Select Role" styleClass="input-field" maxWidth="Infinity"/>
+            
+            <Button text="Register" onAction="#handleRegister" styleClass="primary-button" maxWidth="Infinity"/>
+            <Button text="Back to Login" onAction="#handleBackToLogin" styleClass="secondary-button" maxWidth="Infinity"/>
+        </VBox>
+    </VBox>
+</VBox> 

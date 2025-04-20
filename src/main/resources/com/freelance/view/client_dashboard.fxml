@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.freelance.controller.ClientDashboardController" stylesheets="@../styles/styles.css">
+    <!-- Top section with logout button -->
+    <HBox alignment="CENTER_RIGHT" styleClass="header">
+        <padding>
+            <Insets top="10" right="20" bottom="10" left="20"/>
+        </padding>
+        <Button fx:id="logoutButton" text="Logout" onAction="#handleLogout" styleClass="logout-button"/>
+    </HBox>
+
+    <!-- Main content -->
+    <TabPane VBox.vgrow="ALWAYS" styleClass="tab-pane">
+        <Tab text="Search Freelancers" closable="false">
+            <VBox spacing="15" styleClass="dashboard-container">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                <Label text="Find the perfect freelancer for your project" styleClass="title-label"/>
+                <Label text="Search by skills and expertise" styleClass="subtitle-label"/>
+                
+                <HBox spacing="15" alignment="CENTER_LEFT" styleClass="search-container">
+                    <ComboBox fx:id="skillComboBox" promptText="Select Skills" styleClass="input-field" HBox.hgrow="ALWAYS"/>
+                    <Button text="Add Skill" onAction="#addSkill" styleClass="primary-button"/>
+                    <Button text="Search" onAction="#searchFreelancers" styleClass="primary-button"/>
+                </HBox>
+                
+                <ListView fx:id="selectedSkillsList" styleClass="list-view" VBox.vgrow="NEVER" maxHeight="100"/>
+                
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-pane">
+                    <VBox fx:id="freelancerResults" spacing="15"/>
+                </ScrollPane>
+            </VBox>
+        </Tab>
+
+        <Tab text="Freelancer Profiles" closable="false">
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-pane">
+                <VBox fx:id="freelancerProfilesContainer" spacing="15" styleClass="dashboard-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="Post Project" closable="false">
+            <VBox spacing="15" styleClass="dashboard-container">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                <Label text="Create a New Project" styleClass="title-label"/>
+                <Label text="Fill in the details to post your project" styleClass="subtitle-label"/>
+                
+                <TextField fx:id="projectTitle" promptText="Project Title" styleClass="input-field"/>
+                <TextArea fx:id="projectDescription" promptText="Project Description" styleClass="input-field" VBox.vgrow="ALWAYS"/>
+                <HBox spacing="15">
+                    <TextField fx:id="projectBudget" promptText="Budget" styleClass="input-field" HBox.hgrow="ALWAYS"/>
+                    <DatePicker fx:id="projectDeadline" promptText="Deadline" styleClass="input-field" HBox.hgrow="ALWAYS"/>
+                </HBox>
+                <Button text="Post Project" onAction="#postProject" styleClass="primary-button" maxWidth="Infinity"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="My Projects" closable="false">
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-pane">
+                <VBox spacing="15" styleClass="dashboard-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                    <TitledPane text="Active Projects" expanded="true" styleClass="titled-pane">
+                        <VBox fx:id="activeProjectsContainer" spacing="15"/>
+                    </TitledPane>
+                    <TitledPane text="Completed Projects" expanded="true" styleClass="titled-pane">
+                        <VBox fx:id="completedProjectsContainer" spacing="15"/>
+                    </TitledPane>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="Proposals" closable="false">
+            <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="scroll-pane">
+                <VBox fx:id="proposalsContainer" spacing="15" styleClass="dashboard-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="Progress" closable="false">
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+                <VBox fx:id="projectProgressContainer" spacing="15" styleClass="dashboard-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="Invoices" closable="false">
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+                <VBox fx:id="invoicesContainer" spacing="15" styleClass="dashboard-container">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+                </VBox>
+            </ScrollPane>
+        </Tab>
+
+        <Tab text="Ratings" closable="false">
+            <VBox spacing="15" styleClass="dashboard-container">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+                <Label text="Rate Freelancers" styleClass="title-label"/>
+                <Label text="Share your experience with freelancers" styleClass="subtitle-label"/>
+                
+                <ComboBox fx:id="freelancerComboBox" promptText="Select Freelancer" styleClass="input-field" maxWidth="Infinity"/>
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <Label text="Rating:" styleClass="subtitle-label"/>
+                    <Slider fx:id="ratingSlider" min="1" max="5" showTickLabels="true" showTickMarks="true" 
+                            majorTickUnit="1" minorTickCount="0" snapToTicks="true" HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="ratingValue" styleClass="subtitle-label"/>
+                </HBox>
+                <TextArea fx:id="ratingComment" promptText="Add a comment (optional)" styleClass="input-field" VBox.vgrow="ALWAYS"/>
+                <Button text="Submit Rating" onAction="#submitRating" styleClass="primary-button" maxWidth="Infinity"/>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox> 

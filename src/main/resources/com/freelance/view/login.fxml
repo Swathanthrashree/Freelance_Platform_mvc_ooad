@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.freelance.controller.LoginController" stylesheets="@../styles/styles.css">
+    
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+
+    <VBox alignment="CENTER" spacing="25" maxWidth="400" styleClass="login-container">
+        <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
+            <Image url="@../images/logo.png"/>
+        </ImageView>
+        
+        <Label text="Welcome Back" styleClass="title-label"/>
+        <Label text="Sign in to your account" styleClass="subtitle-label"/>
+        
+        <VBox spacing="15" maxWidth="400" styleClass="form-container">
+            <TextField fx:id="username" promptText="Username" styleClass="input-field"/>
+            <PasswordField fx:id="password" promptText="Password" styleClass="input-field"/>
+            
+            <ComboBox fx:id="roleComboBox" promptText="Select Role" styleClass="input-field" maxWidth="Infinity"/>
+            
+            <Button text="Sign In" onAction="#handleLogin" styleClass="primary-button" maxWidth="Infinity"/>
+            <Button text="Create Account" onAction="#handleRegister" styleClass="secondary-button" maxWidth="Infinity"/>
+        </VBox>
+    </VBox>
+</VBox> 
